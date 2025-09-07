@@ -17,9 +17,6 @@ public class ATMBankSimulation {
         double balance=5000000.623717;
         System.out.println(balance); 
 
-        
-        
-        
         long withdraw=100000;
 
         short transaction=0;
