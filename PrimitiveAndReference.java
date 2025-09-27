@@ -26,27 +26,63 @@ class Test{
 
 public class PrimitiveAndReference {
     public static void main(String[] args){
-        // Answer 11:-
-      Dog d1=null;
-    //   d1.bark();//Run time error
+        // Answer 1:-
+        // Dog d;
+        // d.bark();//Compile time error
 
-    // Answer 12:-
-d1=new Dog();
-d1.name="Bruno";
-System.out.println(d1.name);//Bruno
-Test t1=new Test();
-t1.renameDog(d1);
+        // Answer 2:-
+        Dog d1=new Dog();
+        Dog d2=d1;
+        d1.name="Alpha";
+        System.out.println(d2.name);//Alpha its like 2 remote controlls are controlling a single TV
 
-System.out.println(d1.name);//Buddy and since the method takes a reference variable from dog class as parameter and modify its name as a result buddy is printed.
+        // Answer 3:-
+        d1.name="Rex";
+        d1=new Dog();
+        d1.name="Buddy";
+        System.out.println(d2.name);//Rex because d2 object is unaware of d1's transformation
 
-// Answer 13:-
-Dog dog1=new Dog();
-dog1.name="Rocky";
-Test t2=new Test();
-t2.replacing(dog1);
-System.out.println(dog1.name);//Rocky the OG name the replacing method tried to change the memory address of the dog1 object but i guess it didn't succeed and the name never changed.
+        // Answer 4:-
+        Dog d3=new Dog();
+        d3.name="Pluto";
+            Test t1=new Test();
+            t1.replacing(d3);//Reassigning
+            System.out.println(d3.name);//Pluto 
+            t1.renameDog(d3);//Modifing the parameter
+            System.out.println(d3.name);//Buddy
 
-// Answer 14:-
+        // Answer 5:-
+        System.out.println(d1==d2);//false
+        // Because their memory addresses are different.
 
+        // Answer 6:-
+        Dog d4=null;
+        Dog d5=null;
+        System.out.println(d4==d5);//true
+        // Because their memory addresses are same.
+
+        // Answer 7:-
+        // There are 2 scenarios to question 7
+        // Scenario 1:-
+        Dog d6=new Dog();
+        Dog d7=d6;
+
+        d6.name="Bruno";
+        d7.name="Mar";
+        System.out.println(d6.name);//Mar
+        System.out.println(d7.name);//Mar 2 remotes 1 TV logic. or same memory address.
+        d6=null;
+        System.out.println(d7.name);//Mar still pointing to the memory address
+        // System.out.println(d6.name);//RunTime Error
+        // But d7 still pointing to the memory address so no garbage collection for now.
+
+        // Scenario 2:-
+        Dog d8=new Dog();
+        Dog d9=new Dog();
+
+        d8.name="Jolly";
+        d9.name="Rancher";
+        System.out.println(d8.name);
+        System.out.println(d9.name);
     }
 }
